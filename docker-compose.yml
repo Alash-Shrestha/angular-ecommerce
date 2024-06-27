@@ -1,0 +1,18 @@
+services:
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile-angular
+    container_name: angular-ecommerce
+    ports:
+      - 4200:4200
+    command: ["ng", "serve", "--host", "0.0.0.0"]
+
+  json-server:
+    build:
+      context: .
+      dockerfile: Dockerfile-json-server
+    container_name: angular-ecommerce-json-server
+    ports:
+      - "3000:3000"
+    command: ["json-server", "--watch", "mock-api-data.json"]
